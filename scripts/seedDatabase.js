@@ -73,11 +73,12 @@ async function fetchBooks() {
 function generateUniqueCoverImage(id) {
     return urlsArr[id-1];
 }
+console.log(process.env.MONGO_URI);
 
 // Seed the database
 async function seedDatabase() {
   try {
-    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect("mongodb+srv://demotesting1375:hjFNbhLQPlkBWUX5@cluster0.fxk91nf.mongodb.net/booksCatalogApp?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('MongoDB connected');
 
     const books = await fetchBooks();
@@ -100,4 +101,4 @@ async function seedDatabase() {
   }
 }
 
-// seedDatabase();
+seedDatabase();
