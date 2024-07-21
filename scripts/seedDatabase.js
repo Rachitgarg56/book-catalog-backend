@@ -59,10 +59,6 @@ const urlsArr = [
     // "https://covers.openlibrary.org/b/id/7222287-L.jpg"   // The Divine Comedy
 ]
 
-const MONGO_UR = process.env.MONGO_URI;
-const MONGO_URI = MONGO_UR;
-
-
 // Fetch data from the API
 async function fetchBooks() {
   try {
@@ -81,7 +77,7 @@ function generateUniqueCoverImage(id) {
 // Seed the database
 async function seedDatabase() {
   try {
-    await mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('MongoDB connected');
 
     const books = await fetchBooks();

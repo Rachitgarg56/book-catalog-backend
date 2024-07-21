@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-mongoose.connect('mongodb://0.0.0.0:27017/booksCatalogApp')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('DB Connection established successfully'))
     .catch((err) => console.log('Error while connecting database', err));
 
